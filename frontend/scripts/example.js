@@ -1,3 +1,11 @@
+var ReactContainerQuery = require('react-container-query');
+
+var query = {
+  width_larger_than_768: {
+    backgroundColor: black
+  }
+};
+
 var ShapeItem = React.createClass({
   getInitialState: function() {
     return {
@@ -48,7 +56,7 @@ var ShapeBox = React.createClass({
     var nodeItem = [];
     this.setState({title: 'Diamond', figure:'diamond'});
     var sqrt = 1;
-    while(sqrt<=Math.sqrt(this.state.number_of_items)){
+    while(sqrt<Math.sqrt(this.state.number_of_items)){
       for(var j=0; j<sqrt; j++){
         nodeItem.push(<ShapeItem key={'item'+j}/>);
         console.log(this.state.length);
@@ -78,6 +86,7 @@ var ShapeBox = React.createClass({
       length: 0
     };
   },
+  mixins: [ ReactContainerQuery.createContainerQueryMixin(query) ],
   render: function() {
     return (
       <div className="shapeBox">
